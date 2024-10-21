@@ -1,0 +1,105 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    background-image: url('img/logo_fondo.png');
+    background-size: 40%; /* Tamaño original de la imagen de fondo */
+    background-position: center 130%;
+    background-repeat: no-repeat;
+}
+
+header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 95%;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    z-index: 3; /* Asegura que esté por encima del fondo */
+}
+
+.logo {
+    width: 250px;
+    height: auto;
+    margin-right: 50px;
+}
+
+h1 {
+    font-size: 30px;
+    margin: 0;
+}
+
+.container {
+    text-align: center;
+    width: 100%; /* Mantiene el ancho completo */
+    height: 100%; /* Mantiene la altura completa */
+    background-color: rgba(255, 255, 255, 0.9); /* Fondo transparente */
+    border-radius: 10px;
+    position: absolute; /* Para cubrir solo la imagen de fondo */
+    top: 0; /* Al inicio */
+    left: 0; /* A la izquierda */
+    z-index: 1; /* Asegura que esté debajo del logo y título */
+}
+
+.menu-title {
+    font-weight: bold;
+    font-size: 25px; /* Tamaño reducido para "Menú" */
+    margin: 10px 0; /* Separación de arriba y abajo */
+    position: absolute; /* Posicionar "Menú" en la parte superior */
+    top: 130px; /* Ajustar según la altura del logo */
+    left: 100px; /* Desplazar un poco a la derecha */
+    z-index: 2; /* Asegura que esté sobre el fondo */
+}
+
+.highlight {
+    font-size: 35px; /* Tamaño reducido para "Convenios" */
+    font-weight: bold;
+    margin: 20px 0; /* Separación de arriba y abajo */
+    position: absolute; /* Posicionar "Convenios" en la parte superior */
+    top: 130px; /* Mismo nivel que "Menú" */
+    left: 50%; /* Centrado */
+    transform: translateX(-50%); /* Centrado en relación al ancho */
+    z-index: 2; /* Asegura que esté sobre el fondo */
+}
+
+.menu {
+    display: flex;
+    justify-content: center; /* Centra todo el menú */
+    width: 100%;
+    margin-top: 250px; /* Aumenta la separación de la parte superior para los enlaces */
+}
+
+.menu div {
+    display: flex;
+    flex-direction: column;
+    gap: 50px; /* Aumenta la separación entre los enlaces */
+    width: 250px; /* Ajusta el ancho de cada columna */
+    margin: 0 40px; /* Aumenta el margen lateral para separación */
+}
+
+.menu div a {
+    color: #000;
+    text-decoration: none;
+    font-size: 20px;
+    text-align: center; /* Centrado del texto en los enlaces */
+}
+
+.menu div a:hover {
+    text-decoration: underline;
+}
+
+
+
+
+
+
+
+
+

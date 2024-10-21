@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Organización</title>
+    <link rel="stylesheet" href="styleRegistro.css">
+</head>
+<body>
+    <header>
+        <a href="index.html">
+            <img src="img/LOGO_RIVIERA.png" alt="Logo" class="logo">
+        </a>
+    </header>
+
+    <div class="form-container">
+        <h2>Datos de la organización</h2>
+        <form action="submit.php" method="POST" enctype="multipart/form-data">
+            <div class="form-grid">
+                <div>
+                    <label for="nombre">Nombre de la organización</label>
+                    <input type="text" id="nombre" name="nombre" required>
+                </div>
+
+                <div>
+                    <label for="giro">Giro de la empresa</label>
+                    <select id="giro" name="giro">
+                        <option value="educacion">Educación</option>
+                        <option value="tecnologia">Tecnología</option>
+                        <option value="salud">Salud</option>
+                        <option value="salud">Turismo</option>
+                        <option value="salud">Entretenimiento</option>
+                        <option value="salud">Conservacion</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="domicilio">Domicilio</label>
+                    <input type="text" id="domicilio" name="domicilio" required>
+                </div>
+
+                <div>
+                    <label for="web">Página web</label>
+                    <input type="url" id="web" name="web">
+                </div>
+
+                <div>
+                    <label for="redes">Redes sociales</label>
+                    <input type="text" id="redes" name="redes">
+                </div>
+
+                <div>
+                    <label for="status">Estado</label>
+                    <select id="status" name="status" required>
+                        <option value="activo">Activo</option>
+                        <option value="inactivo">Inactivo</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="categoria">Categoría</label>
+                    <select id="categoria" name="categoria">
+                        <option value="a">A</option>
+                        <option value="aa">AA</option>
+                        <option value="aaa">AAA</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="tipo_organizacion">Tipo de organización</label>
+                    <select id="tipo_organizacion" name="tipo_organizacion">
+                        <option value="Publica">Publica</option>
+                        <option value="Privada">Privada</option>
+                    </select>
+                </div>
+
+                <div class="full-width">
+                    <label for="descripcion">Descripción</label>
+                    <textarea id="descripcion" name="descripcion" rows="4"></textarea>
+                </div>
+
+                <div class="full-width">
+                    <label for="logotipo">Logotipo</label>
+                    <input type="file" id="logotipo" name="logotipo" accept="image/*">
+                </div>
+
+                <div class="button-container">
+                    <button type="submit">Guardar</button>
+                    <button type="button" onclick="window.location.href='organizaciones.php'">Cancelar</button>
+                </div>
+                
+            </div>
+        </form>
+    </div>
+
+</body>
+</html>
+

@@ -1,0 +1,26 @@
+/* styles.css */
+
+.estatus-aprobado {
+    background-color: #28a745; /* Verde */
+    color: white;
+}
+
+.estatus-no-aprobado {
+    background-color: #dc3545; /* Rojo */
+    color: white;
+}
+
+.estatus-en-revision {
+    background-color: #ffc107; /* Amarillo */
+    color: black;
+}
+
+.estatus-en-validacion {
+    background-color: #17a2b8; /* Azul */
+    color: black;
+}
+
+.estatus-en-aprobacion {
+    background-color: #007bff; /* Azul oscuro */
+    color: white;
+}

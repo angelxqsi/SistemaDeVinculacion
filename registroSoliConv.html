@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Solicitud de Convenio</title>
+    <link rel="stylesheet" href="styleSoliConv.css">
+</head>
+<body>
+    <header>
+        <a href="index.html">
+            <img src="img/LOGO_RIVIERA.png" alt="Logo" class="logo">
+        </a>
+    </header>
+
+    <div class="form-container">
+        <h2>Datos de Solicitud de Convenio</h2>
+        <form action="submitSoliConv.php" method="POST" enctype="multipart/form-data">
+            <div class="form-grid">
+                <div>
+                    <label for="nombre_organizacion">Nombre de la organización</label>
+                    <input type="text" id="nombre_organizacion" name="nombre_organizacion" required>
+                </div>
+
+                <div>
+                    <label for="logotipo">Logotipo</label>
+                    <input type="file" id="logotipo" name="logotipo" accept="image/*" required>
+                </div>
+
+                <div>
+                    <label for="objetivos">Objetivos del convenio</label>
+                    <textarea id="objetivos" name="objetivos" rows="4" required></textarea>
+                </div>
+
+                <div>
+                    <label for="nombre_solicitante">Nombre del solicitante</label>
+                    <input type="text" id="nombre_solicitante" name="nombre_solicitante" required>
+                </div>
+
+                <div>
+                    <label for="area_departamento">Área o departamento solicitante</label>
+                    <input type="text" id="area_departamento" name="area_departamento" required>
+                </div>
+
+                <div>
+                    <label for="beneficiarios">Beneficiarios del convenio</label>
+                    <textarea id="beneficiarios" name="beneficiarios" rows="4" required></textarea>
+                </div>
+
+                <div>
+                    <label for="alcance">Alcance del convenio</label>
+                    <textarea id="alcance" name="alcance" rows="4" required></textarea>
+                </div>
+
+                <div>
+                    <label for="beneficios_comerciales">Beneficios comerciales</label>
+                    <textarea id="beneficios_comerciales" name="beneficios_comerciales" rows="4" required></textarea>
+                </div>
+
+                <div>
+                    <label for="estatus">Estatus del convenio</label>
+                    <select id="estatus" name="estatus" required>
+                        <option value="En revision">En revisión</option>
+                        <option value="En validacion">En validación</option>
+                        <option value="En aprobacion">En aprobación</option>
+                        <option value="Aprobado">Aprobado</option>
+                        <option value="No aprobado">No aprobado</option>
+                    </select>
+                </div>
+
+                <div class="button-container">
+                    <button type="submit">Guardar</button>
+                    <button type="button" onclick="window.location.href='listaSoliConv.php'">Cancelar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
