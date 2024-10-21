@@ -13,6 +13,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $principal = intval($_POST['principal']);
     $estatus = $_POST['estatus'];
     
+    // Captura el ID de la nueva organización
+    $organizacion_id = intval($_POST['organizacion_id']); // Asegúrate de capturar el ID de la organización
+
     // Captura los días y horas de atención
     $horarios_dia1 = $_POST['horarios_dia1'];
     $horarios_dia2 = $_POST['horarios_dia2'];
@@ -24,9 +27,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Construcción del valor de horarios_atencion
     $horarios_atencion = "$horarios_dia1 a $horarios_dia2, $horarios_hora1 $horarios_am_pm1 a $horarios_hora2 $horarios_am_pm2";
 
-    // Uso de consultas preparadas
-    $stmt = $conn->prepare("UPDATE contactos SET nombre=?, apellido=?, cargo=?, area_departamento=?, correo_electronico=?, telefono_celular=?, telefono_oficina_ext=?, principal=?, estatus=?, horarios_atencion=? WHERE id=?");
-    $stmt->bind_param("sssssissssi", $nombre, $apellido, $cargo, $area, $correo, $telefono_celular, $telefono_oficina, $principal, $estatus, $horarios_atencion, $id);
+    // Actualiza la consulta para incluir el ID de organización
+    $stmt = $conn->prepare("UPDATE contactos SET nombre=?, apellido=?, cargo=?, area_departamento=?, correo_electronico=?, telefono_celular=?, telefono_oficina_ext=?, principal=?, estatus=?, horarios_atencion=?, organizacion_id=? WHERE id=?");
+    $stmt->bind_param("sssssissssii", $nombre, $apellido, $cargo, $area, $correo, $telefono_celular, $telefono_oficina, $principal, $estatus, $horarios_atencion, $organizacion_id, $id);
     
     if ($stmt->execute()) {
         header('Location: contactos.php');

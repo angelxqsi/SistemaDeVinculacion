@@ -51,8 +51,8 @@
                     <th class="text-center">Área/Departamento</th>
                     <th class="text-center">Correo Electrónico</th>
                     <th class="text-center">Teléfono</th>
-                    <!-- <th class="text-center">Teléfono Extensión</th> -->
                     <th class="text-center">Horarios de Atención</th>
+                    <th class="text-center">Organización</th> <!-- Nueva columna -->
                     <th class="text-center">Acciones</th>
                 </tr>
             </thead>
@@ -87,8 +87,8 @@
                             table_body += '<td>' + value.area_departamento + '</td>';
                             table_body += '<td>' + value.correo_electronico + '</td>';
                             table_body += '<td>' + value.telefono + '</td>';
-                            // table_body += '<td>' + value.telefono_oficina_ext + '</td>';
                             table_body += '<td>' + value.horarios_atencion + '</td>';
+                            table_body += '<td>' + value.organizacion_nombre + '</td>'; // Nueva columna para la organización
                             table_body += '<td>';
                             table_body += '<div class="d-flex justify-content-between">';
                             table_body += '<a href="editar_contacto.php?id=' + value.id + '" class="btn btn-sm btn-warning mx-2 d-flex align-items-center"><i class="fas fa-edit" style="margin-right: 5px;"></i>Editar</a>';

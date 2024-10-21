@@ -8,6 +8,21 @@ if (isset($_GET['id'])) {
 
     if ($resultado->num_rows > 0) {
         $contacto = $resultado->fetch_assoc();
+        
+        // Supongamos que el formato de horarios_atencion es algo como "Lunes a Viernes, 9 AM a 5 PM"
+        $horarios_atencion = $contacto['horarios_atencion'];
+
+        // Expresión regular para extraer los datos del horario
+        if (preg_match('/(\w+) a (\w+), (\d{1,2}) (AM|PM) a (\d{1,2}) (AM|PM)/i', $horarios_atencion, $matches)) {
+            $dia1 = strtolower($matches[1]);
+            $dia2 = strtolower($matches[2]);
+            $hora1 = $matches[3];
+            $am_pm1 = strtolower($matches[4]);
+            $hora2 = $matches[5];
+            $am_pm2 = strtolower($matches[6]);
+        } else {
+            $dia1 = $dia2 = $hora1 = $hora2 = $am_pm1 = $am_pm2 = '';
+        }
     } else {
         echo "Contacto no encontrado.";
         exit;
@@ -116,23 +131,23 @@ if (isset($_GET['id'])) {
                     <label for="horarios_dia1">Días de Atención</label>
                     <div style="display: flex; align-items: center;">
                         <select id="horarios_dia1" name="horarios_dia1" required>
-                            <option value="lunes" <?php echo ($contacto['horarios_atencion'] == 'lunes') ? 'selected' : ''; ?>>Lunes</option>
-                            <option value="martes" <?php echo ($contacto['horarios_atencion'] == 'martes') ? 'selected' : ''; ?>>Martes</option>
-                            <option value="miercoles" <?php echo ($contacto['horarios_atencion'] == 'miercoles') ? 'selected' : ''; ?>>Miércoles</option>
-                            <option value="jueves" <?php echo ($contacto['horarios_atencion'] == 'jueves') ? 'selected' : ''; ?>>Jueves</option>
-                            <option value="viernes" <?php echo ($contacto['horarios_atencion'] == 'viernes') ? 'selected' : ''; ?>>Viernes</option>
-                            <option value="sabado" <?php echo ($contacto['horarios_atencion'] == 'sabado') ? 'selected' : ''; ?>>Sábado</option>
-                            <option value="domingo" <?php echo ($contacto['horarios_atencion'] == 'domingo') ? 'selected' : ''; ?>>Domingo</option>
+                            <option value="lunes" <?php echo ($dia1 == 'lunes') ? 'selected' : ''; ?>>Lunes</option>
+                            <option value="martes" <?php echo ($dia1 == 'martes') ? 'selected' : ''; ?>>Martes</option>
+                            <option value="miercoles" <?php echo ($dia1 == 'miercoles') ? 'selected' : ''; ?>>Miércoles</option>
+                            <option value="jueves" <?php echo ($dia1 == 'jueves') ? 'selected' : ''; ?>>Jueves</option>
+                            <option value="viernes" <?php echo ($dia1 == 'viernes') ? 'selected' : ''; ?>>Viernes</option>
+                            <option value="sabado" <?php echo ($dia1 == 'sabado') ? 'selected' : ''; ?>>Sábado</option>
+                            <option value="domingo" <?php echo ($dia1 == 'domingo') ? 'selected' : ''; ?>>Domingo</option>
                         </select>
                         <span style="margin: 0 10px;">a</span>
                         <select id="horarios_dia2" name="horarios_dia2" required>
-                            <option value="lunes" <?php echo ($contacto['horarios_atencion'] == 'lunes') ? 'selected' : ''; ?>>Lunes</option>
-                            <option value="martes" <?php echo ($contacto['horarios_atencion'] == 'martes') ? 'selected' : ''; ?>>Martes</option>
-                            <option value="miercoles" <?php echo ($contacto['horarios_atencion'] == 'miercoles') ? 'selected' : ''; ?>>Miércoles</option>
-                            <option value="jueves" <?php echo ($contacto['horarios_atencion'] == 'jueves') ? 'selected' : ''; ?>>Jueves</option>
-                            <option value="viernes" <?php echo ($contacto['horarios_atencion'] == 'viernes') ? 'selected' : ''; ?>>Viernes</option>
-                            <option value="sabado" <?php echo ($contacto['horarios_atencion'] == 'sabado') ? 'selected' : ''; ?>>Sábado</option>
-                            <option value="domingo" <?php echo ($contacto['horarios_atencion'] == 'domingo') ? 'selected' : ''; ?>>Domingo</option>
+                            <option value="lunes" <?php echo ($dia2 == 'lunes') ? 'selected' : ''; ?>>Lunes</option>
+                            <option value="martes" <?php echo ($dia2 == 'martes') ? 'selected' : ''; ?>>Martes</option>
+                            <option value="miercoles" <?php echo ($dia2 == 'miercoles') ? 'selected' : ''; ?>>Miércoles</option>
+                            <option value="jueves" <?php echo ($dia2 == 'jueves') ? 'selected' : ''; ?>>Jueves</option>
+                            <option value="viernes" <?php echo ($dia2 == 'viernes') ? 'selected' : ''; ?>>Viernes</option>
+                            <option value="sabado" <?php echo ($dia2 == 'sabado') ? 'selected' : ''; ?>>Sábado</option>
+                            <option value="domingo" <?php echo ($dia2 == 'domingo') ? 'selected' : ''; ?>>Domingo</option>
                         </select>
                     </div>
                 </div>
@@ -142,12 +157,12 @@ if (isset($_GET['id'])) {
                     <div style="display: flex; align-items: center;">
                         <select id="horarios_hora1" name="horarios_hora1" required>
                             <?php for ($i = 1; $i <= 12; $i++): ?>
-                                <option value="<?php echo $i; ?>" <?php echo ($contacto['horarios_atencion'] == $i) ? 'selected' : ''; ?>><?php echo $i; ?></option>
+                                <option value="<?php echo $i; ?>" <?php echo ($hora1 == $i) ? 'selected' : ''; ?>><?php echo $i; ?></option>
                             <?php endfor; ?>
                         </select>
                         <select id="horarios_am_pm1" name="horarios_am_pm1" required>
-                            <option value="am" <?php echo ($contacto['horarios_atencion'] == 'am') ? 'selected' : ''; ?>>AM</option>
-                            <option value="pm" <?php echo ($contacto['horarios_atencion'] == 'pm') ? 'selected' : ''; ?>>PM</option>
+                            <option value="am" <?php echo ($am_pm1 == 'am') ? 'selected' : ''; ?>>AM</option>
+                            <option value="pm" <?php echo ($am_pm1 == 'pm') ? 'selected' : ''; ?>>PM</option>
                         </select>
                     </div>
                 </div>
@@ -157,12 +172,12 @@ if (isset($_GET['id'])) {
                     <div style="display: flex; align-items: center;">
                         <select id="horarios_hora2" name="horarios_hora2" required>
                             <?php for ($i = 1; $i <= 12; $i++): ?>
-                                <option value="<?php echo $i; ?>" <?php echo ($contacto['horarios_atencion'] == $i) ? 'selected' : ''; ?>><?php echo $i; ?></option>
+                                <option value="<?php echo $i; ?>" <?php echo ($hora2 == $i) ? 'selected' : ''; ?>><?php echo $i; ?></option>
                             <?php endfor; ?>
                         </select>
                         <select id="horarios_am_pm2" name="horarios_am_pm2" required>
-                            <option value="am" <?php echo ($contacto['horarios_atencion'] == 'am') ? 'selected' : ''; ?>>AM</option>
-                            <option value="pm" <?php echo ($contacto['horarios_atencion'] == 'pm') ? 'selected' : ''; ?>>PM</option>
+                            <option value="am" <?php echo ($am_pm2 == 'am') ? 'selected' : ''; ?>>AM</option>
+                            <option value="pm" <?php echo ($am_pm2 == 'pm') ? 'selected' : ''; ?>>PM</option>
                         </select>
                     </div>
                 </div>
