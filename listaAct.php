@@ -11,7 +11,7 @@
 </head>
 <body>
     <div class="container mt-4">
-        <h2 class="text-center">Lista de Actividades</h2>
+        <h2 class="text-center">Solicitud de Actividades</h2>
 
         <!-- Barra de búsqueda, selector de registros y botones en la misma fila -->
         <div class="row g-4 align-items-center mb-4">

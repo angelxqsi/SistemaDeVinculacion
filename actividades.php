@@ -17,7 +17,7 @@
     </header>
 
     <div class="form-container">
-        <h2>Datos de la Actividad</h2>
+        <h2>Datos de la Solicitud de Actividad</h2>
         <form action="submitActividad.php" method="POST" enctype="multipart/form-data">
             <div class="form-grid">
 

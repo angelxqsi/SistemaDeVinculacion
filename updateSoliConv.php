@@ -24,7 +24,16 @@ $currentLogo = $currentData['logotipo'];
 // Manejo del logotipo
 if (isset($_FILES['logotipo']) && $_FILES['logotipo']['error'] == UPLOAD_ERR_OK) {
     $logotipo = $_FILES['logotipo']['name'];
-    // Aquí puedes agregar código para mover el archivo a la carpeta deseada, si es necesario
+    $uploadDir = 'uploads/'; // Ruta a la carpeta donde se guardan los logotipos
+    $uploadFile = $uploadDir . basename($logotipo);
+
+    // Mueve el archivo a la carpeta deseada
+    if (move_uploaded_file($_FILES['logotipo']['tmp_name'], $uploadFile)) {
+        // Archivo subido con éxito
+    } else {
+        echo "Error al mover el archivo.";
+        exit();
+    }
 } else {
     // Mantener el logotipo actual si no se subió uno nuevo
     $logotipo = $currentLogo;

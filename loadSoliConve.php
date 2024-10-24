@@ -25,24 +25,23 @@ $query = "
         nc.id,
         o.logotipo AS logotipo,
         o.nombre AS nombre_organizacion,
-        CONCAT(c.nombre, ' ', c.apellido) AS nombre_representante, -- Concatenar nombre y apellido
+        IFNULL(CONCAT(c.nombre, ' ', c.apellido), 'Sin contacto principal') AS nombre_representante, -- Mostrar mensaje si no hay contacto principal
         nc.responsable_convenio,
         nc.fecha_fin_convenio,
         nc.estatus_convenio
     FROM nuevos_convenios nc
     JOIN organizacion o ON nc.organizacion_id = o.id
-    JOIN contactos c ON o.id = c.organizacion_id -- Relacionar con la tabla contactos
+    LEFT JOIN contactos c ON o.id = c.organizacion_id AND c.principal = 1 -- Solo incluye el contacto principal
     WHERE 
-        c.principal = 1 -- Solo mostrar el contacto principal
-        AND (o.nombre LIKE ? OR 
-        CONCAT(c.nombre, ' ', c.apellido) LIKE ? OR  -- Búsqueda en el nombre completo del representante
+        o.nombre LIKE ? OR 
+        CONCAT(c.nombre, ' ', c.apellido) LIKE ? OR 
         nc.responsable_convenio LIKE ? OR 
         nc.estatus_convenio LIKE ? OR 
-        nc.fecha_fin_convenio LIKE ?)";
+        nc.fecha_fin_convenio LIKE ?";
 
 // Si el filtro de estatus no está vacío, se agrega a la consulta
 if (!empty($estatus)) {
-    $query .= " AND nc.estatus_convenio = ?"; // Agrega la condición del estatus
+    $query .= " AND nc.estatus_convenio = ?";
 }
 
 // Agrega la paginación
@@ -54,7 +53,7 @@ $stmt = $mysqli->prepare($query);
 // Construye el parámetro de búsqueda
 $searchTerm = "%" . $search . "%";
 
-// Vincula los parámetros a la consulta dependiendo de si el estatus fue seleccionado
+// Vincula los parámetros a la consulta
 if (!empty($estatus)) {
     $stmt->bind_param('ssssssii', $searchTerm, $searchTerm, $searchTerm, $searchTerm, $searchTerm, $estatus, $offset, $limit);
 } else {
@@ -80,20 +79,15 @@ $countQuery = "
     SELECT COUNT(nc.id) AS total
     FROM nuevos_convenios nc
     JOIN organizacion o ON nc.organizacion_id = o.id
-    JOIN contactos c ON o.id = c.organizacion_id
+    LEFT JOIN contactos c ON o.id = c.organizacion_id AND c.principal = 1
     WHERE 
-        c.principal = 1 -- Solo el contacto principal
-        AND (o.nombre LIKE ? OR 
+        o.nombre LIKE ? OR 
         CONCAT(c.nombre, ' ', c.apellido) LIKE ? OR 
         nc.responsable_convenio LIKE ? OR 
         nc.estatus_convenio LIKE ? OR 
-        nc.fecha_fin_convenio LIKE ?)";
+        nc.fecha_fin_convenio LIKE ?";
 
-// Si se seleccionó un estatus, también lo agregamos al conteo
-if (!empty($estatus)) {
-    $countQuery .= " AND nc.estatus_convenio = ?";
-}
-
+// Prepara la consulta para el conteo
 $countStmt = $mysqli->prepare($countQuery);
 
 // Vincula los parámetros para el conteo

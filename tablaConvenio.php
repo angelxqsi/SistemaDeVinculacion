@@ -49,10 +49,10 @@ include 'actualizar_estatus.php';
             </div>
 
             <div class="col-auto">
-                <a href="convenio.php" class="btn btn-primary">Crear Nueva Solicitud</a>
+                <a href="convenio.php" class="btn btn-primary">Crear Nuevo Convenio</a>
             </div>
             <div class="col-auto">
-                <a href="index.html" class="btn btn-secondary">Menú</a>
+                <a href="convenios.html" class="btn btn-secondary">Menú</a>
             </div>
         </div>
 

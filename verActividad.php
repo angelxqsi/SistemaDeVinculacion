@@ -113,6 +113,8 @@ if (isset($_GET['id'])) {
                 <a href="listaAct.php" class="btn btn-primary">Regresar</a>
                 <a href="editarActividad.php?id=<?php echo isset($row) ? $row['id'] : ''; ?>" class="btn btn-warning" id="editarBtn">Editar</a>
                 <a href="cancelarActividad.php?id=<?php echo isset($row) ? $row['id'] : ''; ?>" class="btn btn-danger" id="cancelarBtn" style="display: none;">Cancelar</a>
+                <a href="descargar.php?id=<?php echo isset($row) ? $row['id'] : ''; ?>" class="btn btn-success">Descargar en Word</a>
+
             </div>
         </form>
     </div>

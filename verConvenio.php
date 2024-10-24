@@ -12,15 +12,16 @@ if (isset($_GET['id'])) {
             nc.*, 
             o.nombre AS nombre_organizacion, 
             o.logotipo AS logotipo,  
-            c.nombre AS nombre_representante, 
+            c.nombre AS nombre_representante,  -- Solo el nombre del representante
+            c.apellido AS apellido_representante,  -- Apellido del representante
             c.cargo AS cargo_representante,
             s.nombre_organizacion AS nombre_solicitud
         FROM 
             nuevos_convenios AS nc 
         JOIN 
             organizacion AS o ON nc.organizacion_id = o.id 
-        JOIN 
-            contactos AS c ON nc.contacto_principal_id = c.id 
+        LEFT JOIN 
+            contactos AS c ON nc.contacto_principal_id = c.id -- Usamos LEFT JOIN para obtener el contacto principal si existe
         JOIN 
             solicitud_convenios AS s ON nc.solicitud_convenio_id = s.id 
         WHERE 
@@ -66,11 +67,14 @@ if (isset($_GET['id'])) {
             </div>
             <div class="form-group">
                 <label for="nombre_representante">Nombre del representante</label>
-                <input type="text" id="nombre_representante" class="form-control" value="<?php echo $row['nombre_representante']; ?>" readonly>
+                <input type="text" id="nombre_representante" class="form-control" 
+                       value="<?php echo (!empty($row['nombre_representante']) || !empty($row['apellido_representante'])) ? $row['nombre_representante'] . ' ' . $row['apellido_representante'] : 'Sin contacto principal'; ?>" 
+                       readonly>
             </div>
             <div class="form-group">
                 <label for="cargo_representante">Cargo del representante</label>
-                <input type="text" id="cargo_representante" class="form-control" value="<?php echo $row['cargo_representante']; ?>" readonly>
+                <input type="text" id="cargo_representante" class="form-control" 
+                       value="<?php echo !empty($row['cargo_representante']) ? $row['cargo_representante'] : 'Sin contacto principal'; ?>" readonly>
             </div>
             <div class="form-group">
                 <label for="responsable_convenio">Responsable del convenio</label>
@@ -80,7 +84,6 @@ if (isset($_GET['id'])) {
                 <label for="nombre_solicitud">Nombre de solicitud de convenio</label>
                 <input type="text" id="nombre_solicitud" class="form-control" value="<?php echo $row['nombre_solicitud']; ?>" readonly>
             </div>
-
 
             <!-- Datos que se ocultan inicialmente -->
             <div id="informacion-oculta" style="display: none;">
@@ -145,9 +148,8 @@ if (isset($_GET['id'])) {
                 <input type="text" id="notas_generales" class="form-control" value="<?php echo $row['notas_generales']; ?>" readonly>
             </div>
 
-                        <!-- Botón Ver más -->
-                        <button type="button" class="btn btn-outline-info" id="toggleInfo">Ver más informacion</button>
-
+            <!-- Botón Ver más -->
+            <button type="button" class="btn btn-outline-info" id="toggleInfo">Ver más información</button>
 
             <!-- Botones finales -->
             <div class="text-center">

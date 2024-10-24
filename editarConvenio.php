@@ -76,12 +76,12 @@ if (isset($_GET['id'])) {
                 <div>
                     <label for="estatus">Estatus del convenio</label>
                     <select id="estatus" name="estatus" required <?php echo ($solicitud['estatus'] === 'Aprobado') ? 'disabled' : ''; ?>>
-    <option value="En revisión" <?php echo ($solicitud['estatus'] === 'En revisión') ? 'selected' : ''; ?>>En revisión</option>
-    <option value="En validación" <?php echo ($solicitud['estatus'] === 'En validación') ? 'selected' : ''; ?>>En validación</option>
-    <option value="En aprobación" <?php echo ($solicitud['estatus'] === 'En aprobación') ? 'selected' : ''; ?>>En aprobación</option>
-    <option value="Aprobado" <?php echo ($solicitud['estatus'] === 'Aprobado') ? 'selected' : ''; ?>>Aprobado</option>
-    <option value="No aprobado" <?php echo ($solicitud['estatus'] === 'No aprobado') ? 'selected' : ''; ?>>No aprobado</option>
-</select>
+                        <option value="En revisión" <?php echo ($solicitud['estatus'] === 'En revisión') ? 'selected' : ''; ?>>En revisión</option>
+                        <option value="En validación" <?php echo ($solicitud['estatus'] === 'En validación') ? 'selected' : ''; ?>>En validación</option>
+                        <option value="En aprobación" <?php echo ($solicitud['estatus'] === 'En aprobación') ? 'selected' : ''; ?>>En aprobación</option>
+                        <option value="Aprobado" <?php echo ($solicitud['estatus'] === 'Aprobado') ? 'selected' : ''; ?>>Aprobado</option>
+                        <option value="No aprobado" <?php echo ($solicitud['estatus'] === 'No aprobado') ? 'selected' : ''; ?>>No aprobado</option>
+                    </select>
                 </div>
 
                 <div class="button-container">
@@ -98,4 +98,3 @@ if (isset($_GET['id'])) {
 <?php
 $conn->close();
 ?>
-

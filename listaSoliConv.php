@@ -52,7 +52,7 @@
                 <a href="registroSoliConv.html" class="btn btn-primary">Crear Nueva Solicitud</a>
             </div>
             <div class="col-auto">
-                <a href="index.html" class="btn btn-secondary">Menú</a>
+                <a href="convenios.html" class="btn btn-secondary">Menú</a>
             </div>
         </div>
 
@@ -96,7 +96,7 @@
                     success: function(data) {
                         console.log(data); 
                         if (!data.data || data.data.length === 0) {
-                            alert("No se encontraron resultados.");
+                            // alert("No se encontraron resultados.");
                         }
                         var table_body = '';
                         $.each(data.data, function(key, value){
