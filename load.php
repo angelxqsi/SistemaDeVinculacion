@@ -1,15 +1,6 @@
 <?php
-// Conexión a la base de datos
-$host = 'databaserv.cx8y42y62ekz.us-east-2.rds.amazonaws.com';
-$user = 'admin'; 
-$password = 'root2024'; 
-$database = 'riviera';
-$mysqli = new mysqli($host, $user, $password, $database);
-
-// Verifica la conexión
-if ($mysqli->connect_error) {
-    die("Error de conexión: " . $mysqli->connect_error);
-}
+// Incluir el archivo de configuración
+include 'config.php';
 
 // Parámetros para la búsqueda y la paginación
 $search = isset($_POST['search']) ? $_POST['search'] : '';
@@ -116,4 +107,3 @@ echo json_encode($response);
 
 $mysqli->close();
 ?>
-
