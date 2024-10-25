@@ -1,8 +1,8 @@
 <?php
 // Conexión a la base de datos
-$host = "localhost";
-$user = "root";
-$password = "";
+$host = "databaserv.cx8y42y62ekz.us-east-2.rds.amazonaws.com";
+$user = "admin";
+$password = "root2024";
 $database = "riviera";
 
 $mysqli = new mysqli($host, $user, $password, $database);
