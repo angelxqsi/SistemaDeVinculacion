@@ -1,9 +1,9 @@
 <?php
 // Configuración de la conexión a la base de datos
-$host = "localhost";
-$dbname = "riviera";
-$username = "root";
-$password = "";
+$host = 'databaserv.cx8y42y62ekz.us-east-2.rds.amazonaws.com'; 
+$user = 'admin'; 
+$password = 'root2024'; 
+$database = 'riviera';
 
 try {
     // Conexión a la base de datos
