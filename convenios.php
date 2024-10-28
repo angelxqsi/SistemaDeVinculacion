@@ -13,7 +13,7 @@
     </header>
     
     <div class="container">
-        <a href="index.html">
+        <a href="index.php">
         <p class="menu-title">Menú principal</p>
         </a>
         <div class="highlight">Convenios</div>

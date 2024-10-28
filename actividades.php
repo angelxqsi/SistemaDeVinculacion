@@ -11,7 +11,7 @@
 
 <body>
     <header>
-        <a href="index.html">
+        <a href="index.php">
             <img src="https://6986956.fs1.hubspotusercontent-na1.net/hubfs/6986956/logo-azul-grd%20(1)-1.png" alt="Logo" class="logo">
         </a>
     </header>

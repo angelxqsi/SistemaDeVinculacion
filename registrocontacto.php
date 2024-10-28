@@ -16,7 +16,7 @@ $resultado_org = $conn->query($sql_org);
 </head>
 <body>
     <header>
-        <a href="index.html">
+        <a href="index.php">
             <img src="img/LOGO_RIVIERA.png" alt="Logo" class="logo">
         </a>
     </header>

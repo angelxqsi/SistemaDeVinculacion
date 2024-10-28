@@ -44,7 +44,7 @@ if (isset($_GET['id'])) {
 </head>
 <body>
     <header>
-        <a href="index.html">
+        <a href="index.php">
             <img src="img/LOGO_RIVIERA.png" alt="Logo" class="logo">
         </a>
     </header>

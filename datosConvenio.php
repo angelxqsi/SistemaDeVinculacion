@@ -21,7 +21,7 @@ $solicitudes_result = mysqli_query($conn, $solicitudes_query);
 </head>
 <body>
     <header>
-        <a href="index.html">
+        <a href="index.php">
             <img src="img/LOGO_RIVIERA.png" alt="Logo" class="logo">
         </a>
     </header>

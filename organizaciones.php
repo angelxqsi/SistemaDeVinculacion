@@ -45,7 +45,7 @@
                 <a href="RegistroOrg.html" class="btn btn-primary">Crear Nueva Organización</a>
             </div>
             <div class="col-auto">
-                <a href="index.html" class="btn btn-secondary">Menú</a>
+                <a href="index.php" class="btn btn-secondary">Menú</a>
             </div>
         </div>
 

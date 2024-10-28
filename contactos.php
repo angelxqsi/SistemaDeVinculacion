@@ -39,7 +39,7 @@
 
             <div>
                 <a href="registrocontacto.php" class="btn btn-primary ms-2">Crear Nuevo Contacto</a>
-                <a href="index.html" class="btn btn-secondary ms-2">Menú</a>
+                <a href="index.php" class="btn btn-secondary ms-2">Menú</a>
             </div>
         </div>
 
